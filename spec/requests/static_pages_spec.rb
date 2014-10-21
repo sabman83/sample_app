@@ -1,26 +1,21 @@
 require 'spec_helper'
 
 describe "Static Pages" do
+  subject { page }
   let(:pre_title) { "Ruby on Rails Tutorial Sample App | " }
   describe "Home page" do
-    it "should have the content 'Sample App'" do
-      visit '/static_pages/home'
-      expect(page).to have_content('Sample App')
-      expect(page).to have_title(pre_title + 'Home')
-    end
+    before { visit root_path }
+    it { should have_content('Sample App') }
+    it { should have_title(pre_title + 'Home') }
   end
   describe "About page" do
-
-    it "should have the content 'About Us'" do
-      visit '/static_pages/about'
-      expect(page).to have_content('About Us')
-      expect(page).to have_title(pre_title + 'About Us')
-    end
+    before { visit about_path }
+    it { should have_content('About Us') }
+    it { should have_title(pre_title + 'About Us') }
   end
   describe "Contact Page" do
-    it 'should have the content about Contacts' do
-      visit '/static_pages/contact'
-      expect(page).to have_title(pre_title + 'Contact Us')
-    end
+    before { visit contact_path }
+    it { should have_content('Contact') }
+    it { should have_title(pre_title + 'Contact') }
   end
 end
