@@ -6,7 +6,7 @@ describe User do
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }  
+  it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
@@ -16,7 +16,7 @@ describe User do
     before { @user.name = "" }
     it { should_not be_valid }
   end
-  
+
   describe "when email is not present" do
     before { @user.email = "" }
     it { should_not be_valid }
@@ -36,7 +36,7 @@ describe User do
   describe "return value of authenticate method" do
     before { @user.save }
     let(:found_user) { User.find_by(email: @user.email) }
-    
+
     describe "with valid password" do
       it { should eq found_user.authenticate(@user.password) }
     end
